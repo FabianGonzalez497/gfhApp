@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "title": "Cocinas",
+        "image": "https://www.usmansrl.com/wp-content/uploads/2023/07/WIN-900-dual-VIDRIO.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Heladeras",
+        "image": "https://samsungar.vtexassets.com/arquivos/ids/164847-800-auto?width=800&height=auto&aspect=true"
+    },
+    {
+        "id": 3,
+        "title": "Celulares",
+        "image": "https://samsungar.vtexassets.com/arquivos/ids/189044-800-auto?width=800&height=auto&aspect=true"
+    },
+    {
+        "id": 4,
+        "title": "Televisores",
+        "image": "https://samsungar.vtexassets.com/arquivos/ids/193337-800-auto?width=800&height=auto&aspect=true"
+    }
+]

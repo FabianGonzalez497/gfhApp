@@ -1,0 +1,86 @@
+[
+    {
+        "id": 3,
+        "userId": 1,
+        "createdAt": 1712203200000,
+        "items": [
+            {
+                "id": 5,
+                "title": "Heladera No Frost CoolMax 300",
+                "ShortDescription": "Heladera con tecnología no frost.",
+                "LongDescription": "Gran capacidad y distribución uniforme de frío para conservar alimentos frescos por más tiempo.",
+                "price": 499.99,
+                "stock": 15,
+                "marca": "CoolMax",
+                "category": "Heladeras",
+                "descuento": 10,
+                "tag": "Innovación",
+                "image": "https://www.example.com/images/heladera1.jpg",
+                "quantity": 2
+            },
+            {
+                "id": 6,
+                "title": "Heladera SmartTech 400",
+                "ShortDescription": "Heladera inteligente con conectividad WiFi.",
+                "LongDescription": "Controla tu heladera desde tu smartphone. Incluye dispensador de agua y hielo.",
+                "price": 699.99,
+                "stock": 8,
+                "marca": "SmartTech",
+                "category": "Heladeras",
+                "descuento": 15,
+                "tag": "Premium",
+                "image": "https://www.example.com/images/heladera2.jpg",
+                "quantity": 1
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "userId": 2,
+        "createdAt": 1731465600000,
+        "items": [
+            {
+                "id": 13,
+                "title": "TV Smart LED 50 pulgadas",
+                "ShortDescription": "Televisor LED con resolución 4K.",
+                "LongDescription": "Pantalla de 50 pulgadas con acceso a aplicaciones y streaming integrado.",
+                "price": 799.99,
+                "stock": 20,
+                "marca": "Vision",
+                "category": "Televisores",
+                "descuento": 10,
+                "tag": "Top Ventas",
+                "image": "https://www.example.com/images/tv1.jpg",
+                "quantity": 3
+            },
+            {
+                "id": 14,
+                "title": "Televisor OLED CinemaView 55",
+                "ShortDescription": "Televisor OLED con tecnología HDR.",
+                "LongDescription": "Colores vivos y negros profundos. Experiencia de cine en casa con Dolby Atmos.",
+                "price": 1299.99,
+                "stock": 15,
+                "marca": "CinemaView",
+                "category": "Televisores",
+                "descuento": 15,
+                "tag": "Premium",
+                "image": "https://www.example.com/images/tv2.jpg",
+                "quantity": 2
+            },
+            {
+                "id": 15,
+                "title": "Televisor QLED BrightMax 65",
+                "ShortDescription": "Televisor QLED con control por voz.",
+                "LongDescription": "Experiencia inmersiva con colores vibrantes y conexión inteligente a dispositivos.",
+                "price": 1599.99,
+                "stock": 10,
+                "marca": "BrightMax",
+                "category": "Televisores",
+                "descuento": 20,
+                "tag": "Innovación",
+                "image": "https://www.example.com/images/tv3.jpg",
+                "quantity": 1
+            }
+        ]
+    }
+]
