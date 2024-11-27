@@ -17,11 +17,6 @@ export const shopApi = createApi({
                 return `products.json?orderBy="category"&equalTo="${category}"`;
             },
             transformResponse: (response) => {
-                console.log("Response from Firebase:", response); // Verificar la respuesta
-                return response ? Object.values(response) : [];
-            },
-            transformErrorResponse: (response) => {
-                console.error("Error from Firebase:", response); // Manejar errores
                 return response ? Object.values(response) : [];
             }
         })

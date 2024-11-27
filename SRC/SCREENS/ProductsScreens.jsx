@@ -2,22 +2,22 @@ import { FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native
 import FlatCard from '../COMPONENTS/FlatCard'
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useGetCategoriesQuery, useGetProductsQuery, useGetProductsByCategoryQuery } from '../SERVICES/shopServices';
-import Search from './Search'
+import { useGetProductsByCategoryQuery } from '../SERVICES/shopServices';
+import Search from '../COMPONENTS/Search'
 
 const ProductsScreens = ({ navigation }) => {
     const [productsFiltered, setProductsFiltered] = useState([]);
     const [search, setSearch] = useState("");
     const dispatch = useDispatch();
 
-    const category = useSelector(state => state.shopReducer.value.categorySelected);
+    const category = useSelector(state => state.shop.value.categorySelected);
     console.log("category:", category);
 
-    //const { data: productsFilteredByCategory, error, isLoading } = useGetProductsByCategoryQuery(category);
     const { data: productsFilteredByCategory, error, isLoading } = useGetProductsByCategoryQuery(category);
+    console.log("products filtered:", productsFilteredByCategory);
 
     useEffect(() => {
-        console.log("Response from Firebase:", productsFilteredByCategory); // Log para verificar la respuesta
+        console.log("Response from Firebase:", productsFilteredByCategory); 
         if (productsFilteredByCategory) {
             setProductsFiltered(productsFilteredByCategory);
             if (search) {
@@ -28,8 +28,6 @@ const ProductsScreens = ({ navigation }) => {
             }
         }
     }, [search, productsFilteredByCategory]);
-
-
 
     useEffect(() => {
         if (search && productsFilteredByCategory) {
@@ -44,7 +42,7 @@ const ProductsScreens = ({ navigation }) => {
 
     const renderProductItem = ({ item }) => {
         return (
-            <Pressable onPress={() => navigation.navigate("Producto")}>
+            <Pressable onPress={() => navigation.navigate("Producto", item.id)}>
                 <FlatCard style={styles.productContainer}>
                     <View>
                         <Image
@@ -93,15 +91,13 @@ const ProductsScreens = ({ navigation }) => {
         <>
             <Search setSearch={setSearch} />
             <FlatList
-                data={productsFilteredByCategory}
+                data={productsFiltered}
                 keyExtractor={item => item.id}
                 renderItem={renderProductItem}
             />
         </>
     );
 };
-
-
 
 export default ProductsScreens
 
@@ -180,4 +176,4 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 10,
     },
-})
+});

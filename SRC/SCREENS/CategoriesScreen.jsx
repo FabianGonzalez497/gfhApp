@@ -19,7 +19,7 @@ const CategoriesScreen = ({ navigation }) => {
         return (
             <Pressable onPress={() => {
                 dispatch(setCategory(item.title)); // Usar dispatch para setCategory
-                navigation.navigate('ProductsScreens'); // Asegúrate de que la navegación a la pantalla de productos es correcta
+                navigation.navigate('Productos'); // Asegúrate de que la navegación a la pantalla de productos es correcta
             }}>
                 <FlatCard style={index % 2 === 0 ? { ...styles.categoryItemContainer, ...styles.row } : { ...styles.categoryItemContainer, ...styles.rowReverse }}>
                     <Text style={styles.titleContainer}>{item.title}</Text>

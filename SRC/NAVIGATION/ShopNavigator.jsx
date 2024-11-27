@@ -1,8 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { CategoriesScreen, ProductsScreens, ProductScreen } from "../SCREENS"; // Asegúrate de que esta ruta es correcta
-import Header from "../COMPONENTS/Header"; // Asegúrate de que esta ruta es correcta
+import { CategoriesScreen, ProductsScreens, ProductScreen } from "../SCREENS";
+import Header from "../COMPONENTS/Header";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator(); 
 
 const ShopNavigator = () => {
     return (

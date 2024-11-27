@@ -1,29 +1,29 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native'
-import receipts from '../DATA/receipts.json'
-import FlatCard from '../COMPONENTS/FlatCard'
-import Icon from 'react-native-vector-icons/MaterialIcons'
-import { colors } from '../GLOBAL/colors'
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import FlatCard from '../COMPONENTS/FlatCard';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { colors } from '../GLOBAL/colors';
+import { useGetReceiptsQuery } from '../SERVICES/receiptsService';
 
-const dateOptions = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false }
+const dateOptions = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
 
 const ReceiptsScreen = () => {
+    const { data: receipts, error, isLoading } = useGetReceiptsQuery();
+
     const renderReceiptItem = ({ item }) => {
-        // Calcular el total de la compra, asegurándonos de que price y quantity sean números
-        let total = item.items.reduce((acumulador, item) => {
-            const price = parseFloat(item.price); // Convertir el precio a número
-            const quantity = parseInt(item.quantity, 10); // Convertir la cantidad a número entero
-            if (!isNaN(price) && !isNaN(quantity)) {
-                return acumulador + (quantity * price);
-            } else {
-                return acumulador; // Si hay un valor no válido, no sumamos
-            }
-        }, 0);
+        let total = 0;
+        if (Array.isArray(item.items)) {
+            total = item.items.reduce((acumulador, item) => {
+                const price = parseFloat(item.price);
+                const quantity = parseInt(item.quantity, 10);
+                if (!isNaN(price) && !isNaN(quantity)) {
+                    return acumulador + (quantity * price);
+                } else {
+                    return acumulador;
+                }
+            }, 0);
+        }
 
-
-        // Formatear el total con puntos como separadores de miles
         const formattedTotal = total.toLocaleString('es-AR');
-
-        // Convertir el timestamp `createdAt` a una fecha legible
         const createdAtDate = new Date(item.createdAt).toLocaleString('es-AR', dateOptions);
 
         return (
@@ -36,24 +36,39 @@ const ReceiptsScreen = () => {
         );
     };
 
+    if (isLoading) {
+        return (
+            <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
+                <Text>Cargando recibos...</Text>
+            </View>
+        );
+    }
+
+    if (error) {
+        return (
+            <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
+                <Text>Error al cargar recibos: {error.message}</Text>
+            </View>
+        );
+    }
 
     return (
         <FlatList
             data={receipts}
-            keyExtractor={item => item.id.toString()}
+            keyExtractor={item => item?.id?.toString() || Math.random().toString()} // Validación adicional
             renderItem={renderReceiptItem}
         />
-    )
-}
+    );
+};
 
-export default ReceiptsScreen
+export default ReceiptsScreen;
 
 const styles = StyleSheet.create({
     receiptContainer: {
         padding: 20,
         justifyContent: 'flex-start',
         margin: 15,
-        gap: 10
+        gap: 10,
     },
     title: {
         fontWeight: '700',
@@ -69,4 +84,4 @@ const styles = StyleSheet.create({
     viewIcon: {
         alignSelf: 'flex-end',
     }
-})
+});

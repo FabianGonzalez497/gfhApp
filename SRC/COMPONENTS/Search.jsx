@@ -1,29 +1,24 @@
-import { StyleSheet, TextInput, View } from 'react-native';
+import { StyleSheet, TextInput } from 'react-native'
+import { colors } from '../GLOBAL/colors'
 
-const Search = ({ setSearch }) => {
+const Search = ({setSearch}) => {
     return (
-        <View style={styles.searchContainer}>
-            <TextInput 
-                placeholder='Buscar...'
-                onChangeText={text => setSearch(text)}
-                style={styles.searchInput}
-            />
-        </View>
-    );
+        <TextInput 
+            placeholder="Buscar..." 
+            onChangeText={(text) => setSearch(text)} 
+            style={styles.searchInput} 
+        />
+    )
 }
 
-export default Search;
+export default Search
 
 const styles = StyleSheet.create({
-    searchContainer: {
-        padding: 10,
-        backgroundColor: '#f4f4f4',
-    },
     searchInput: {
-        height: 40,
-        borderColor: '#ddd',
+        padding: 5,
+        margin: 5,
         borderWidth: 1,
+        borderColor: colors.fondo,
         borderRadius: 5,
-        paddingHorizontal: 10,
-    },
-});
+    }
+})
