@@ -1,7 +1,3 @@
-/* ME QUEDE EN CLASE 18 MIN: 16' */
-
-
-
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import ProfileScreens from '../SCREENS/ProfileScreens'
 import Header from '../COMPONENTS/Header'

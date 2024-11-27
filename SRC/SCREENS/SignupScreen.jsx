@@ -5,7 +5,7 @@ import { useSignupMutation } from '../SERVICES/authService';
 import { setUser } from '../FEATURES/AUTH/authSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-import ProfileScreens from './ProfileScreens';
+
 
 const SignupScreen = () => {
     const [email, setEmail] = useState("");
@@ -67,10 +67,10 @@ const SignupScreen = () => {
                 />
             </View>
             <View style={styles.footTextContainer}>
-                <Text style={styles.whiteText}> ¿No tienes una Cuenta? </Text>
+                <Text style={styles.whiteText}> ¿Ya tienes una Cuenta? </Text>
                 <Pressable onPress={() => navigation.navigate('Login')}>
                     <Text style={{ ...styles.whiteText, ...styles.underLineText }}>
-                        Crea una
+                        Inicia sesion
                     </Text>
                 </Pressable>
             </View>
